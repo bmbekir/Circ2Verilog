@@ -1,0 +1,852 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Circ2Verilog">
+  <ClassDiagramComponents>
+    <Interface name="Connectorable" package="Circ2Verilog.ConnectionRender" visibility="publıc" xPosition="20.0" yPosition="20.0">
+      <Methods>
+        <Method name="getPosX" returnType="int" visibility="package"/>
+        <Method name="getPosY" returnType="int" visibility="package"/>
+        <Method name="getConnectorType" returnType="ConnectorType" visibility="package"/>
+      </Methods>
+    </Interface>
+    <Enum name="ConnectorType" package="Circ2Verilog.ConnectionRender" visibility="publıc" xPosition="320.0" yPosition="20.0">
+      <Literals>
+        <Literal name="Input"/>
+        <Literal name="Output"/>
+        <Literal name="ElementInput"/>
+        <Literal name="ElementOutput"/>
+        <Literal name="ElementInout"/>
+      </Literals>
+    </Enum>
+    <Interface name="Elementable" package="Circ2Verilog.ConnectionRender" visibility="publıc" xPosition="620.0" yPosition="20.0">
+      <Methods/>
+    </Interface>
+    <Class name="ElementConnection" package="Circ2Verilog.ConnectionRender" visibility="publıc" xPosition="920.0" yPosition="20.0">
+      <Fields>
+        <Field name="OutElement" type="Elementable" visibility="prıvate"/>
+        <Field name="InElement" type="Elementable" visibility="prıvate"/>
+        <Field name="InConnector" type="Connectorable" visibility="prıvate"/>
+        <Field name="OutConnector" type="Connectorable" visibility="prıvate"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="publıc">
+          <Argument type="Elementable" name="OutElement"/>
+          <Argument type="Elementable" name="InElement"/>
+          <Argument type="Connectorable" name="InConnector"/>
+          <Argument type="Connectorable" name="OutConnector"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getOutElement" returnType="Elementable" visibility="publıc"/>
+        <Method name="setOutElement" returnType="void" visibility="publıc">
+          <Argument type="Elementable" name="OutElement"/>
+        </Method>
+        <Method name="getInElement" returnType="Elementable" visibility="publıc"/>
+        <Method name="setInElement" returnType="void" visibility="publıc">
+          <Argument type="Elementable" name="InElement"/>
+        </Method>
+        <Method name="getInConnector" returnType="Connectorable" visibility="publıc"/>
+        <Method name="setInConnector" returnType="void" visibility="publıc">
+          <Argument type="Connectorable" name="InConnector"/>
+        </Method>
+        <Method name="getOutConnector" returnType="Connectorable" visibility="publıc"/>
+        <Method name="setOutConnector" returnType="void" visibility="publıc">
+          <Argument type="Connectorable" name="OutConnector"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="RenderMachine" package="Circ2Verilog.ConnectionRender" visibility="publıc" xPosition="1220.0" yPosition="20.0">
+      <Fields>
+        <Field name="Connectors" type="Connectorable[]" visibility="prıvate"/>
+        <Field name="Wires" type="Wireable[]" visibility="prıvate"/>
+        <Field name="Inputs" type="Connectorable[]" visibility="prıvate"/>
+        <Field name="Outputs" type="Connectorable[]" visibility="prıvate"/>
+        <Field name="ElementInputs" type="Connectorable[]" visibility="prıvate"/>
+        <Field name="ElementOutputs" type="Connectorable[]" visibility="prıvate"/>
+        <Field name="ElementInouts" type="Connectorable[]" visibility="prıvate"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="publıc">
+          <Argument type="Connectorable[]" name="Connectors"/>
+          <Argument type="Wireable[]" name="wires"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="Render" returnType="ElementConnection[]" visibility="publıc"/>
+      </Methods>
+    </Class>
+    <Interface name="Wireable" package="Circ2Verilog.ConnectionRender" visibility="publıc" xPosition="1520.0" yPosition="20.0">
+      <Methods>
+        <Method name="getToX" returnType="int" visibility="package"/>
+        <Method name="getToY" returnType="int" visibility="package"/>
+        <Method name="getFromX" returnType="int" visibility="package"/>
+        <Method name="getFromY" returnType="int" visibility="package"/>
+      </Methods>
+    </Interface>
+    <Class name="CircuitForm" package="Circ2Verilog.Desktop" visibility="publıc" xPosition="1820.0" yPosition="20.0">
+      <Fields>
+        <Field name="circ" type="Circuit" visibility="package"/>
+        <Field name="LblSharedLabelFont" type="javax.swing.JLabel" visibility="prıvate"/>
+        <Field name="jLabel1" type="javax.swing.JLabel" visibility="prıvate"/>
+        <Field name="jLabel2" type="javax.swing.JLabel" visibility="prıvate"/>
+        <Field name="jLabel3" type="javax.swing.JLabel" visibility="prıvate"/>
+        <Field name="jLabel4" type="javax.swing.JLabel" visibility="prıvate"/>
+        <Field name="jPanel1" type="javax.swing.JPanel" visibility="prıvate"/>
+        <Field name="jPanel2" type="javax.swing.JPanel" visibility="prıvate"/>
+        <Field name="jPanel3" type="javax.swing.JPanel" visibility="prıvate"/>
+        <Field name="jPanel4" type="javax.swing.JPanel" visibility="prıvate"/>
+        <Field name="jPanel5" type="javax.swing.JPanel" visibility="prıvate"/>
+        <Field name="jScrollPane1" type="javax.swing.JScrollPane" visibility="prıvate"/>
+        <Field name="jScrollPane2" type="javax.swing.JScrollPane" visibility="prıvate"/>
+        <Field name="jScrollPane3" type="javax.swing.JScrollPane" visibility="prıvate"/>
+        <Field name="jScrollPane4" type="javax.swing.JScrollPane" visibility="prıvate"/>
+        <Field name="jScrollPane5" type="javax.swing.JScrollPane" visibility="prıvate"/>
+        <Field name="jTabbedPane1" type="javax.swing.JTabbedPane" visibility="prıvate"/>
+        <Field name="jToolBar1" type="javax.swing.JToolBar" visibility="prıvate"/>
+        <Field name="lblCircName" type="javax.swing.JLabel" visibility="prıvate"/>
+        <Field name="lblSharedLabel" type="javax.swing.JLabel" visibility="prıvate"/>
+        <Field name="lblSharedLabelFacing" type="javax.swing.JLabel" visibility="prıvate"/>
+        <Field name="tblAllElements" type="javax.swing.JTable" visibility="prıvate"/>
+        <Field name="tblConnectors" type="javax.swing.JTable" visibility="prıvate"/>
+        <Field name="tblInputs" type="javax.swing.JTable" visibility="prıvate"/>
+        <Field name="tblOutputs" type="javax.swing.JTable" visibility="prıvate"/>
+        <Field name="tblWires" type="javax.swing.JTable" visibility="prıvate"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="publıc">
+          <Argument type="Circuit" name="circ"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+void" visibility="prıvate"/>
+      </Methods>
+    </Class>
+    <Class name="CircuitTableModel" package="Circ2Verilog.Desktop" visibility="publıc" xPosition="2120.0" yPosition="20.0">
+      <Fields>
+        <Field name="circuit" type="Circuit" visibility="prıvate"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="publıc">
+          <Argument type="Circuit" name="circuit"/>
+        </Constructor>
+        <Constructor visibility="publıc">
+          <Argument type="Circuit" name="circuit"/>
+          <Argument type="Object[][]" name="data"/>
+          <Argument type="Object[]" name="columnNames"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getCircuit" returnType="Circuit" visibility="publıc"/>
+        <Method name="setCircuit" returnType="void" visibility="publıc">
+          <Argument type="Circuit" name="circuit"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="CustomMutableTreeNode" package="Circ2Verilog.Desktop" visibility="publıc" xPosition="20.0" yPosition="420.0">
+      <Fields>
+        <Field name="circuit" type="Circuit" visibility="prıvate"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="publıc">
+          <Argument type="Circuit" name="circuit"/>
+        </Constructor>
+        <Constructor visibility="publıc">
+          <Argument type="Circuit" name="circuit"/>
+          <Argument type="Object" name="userObject"/>
+        </Constructor>
+        <Constructor visibility="publıc">
+          <Argument type="Circuit" name="circuit"/>
+          <Argument type="Object" name="userObject"/>
+          <Argument type="boolean" name="allowsChildren"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getCircuit" returnType="Circuit" visibility="publıc"/>
+        <Method name="setCircuit" returnType="void" visibility="publıc">
+          <Argument type="Circuit" name="circuit"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="CustomTableModel" package="Circ2Verilog.Desktop" visibility="publıc" xPosition="320.0" yPosition="420.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="publıc"/>
+        <Constructor visibility="publıc">
+          <Argument type="Object[][]" name="data"/>
+          <Argument type="Object[]" name="columnNames"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="MainForm" package="Circ2Verilog.Desktop" visibility="publıc" xPosition="620.0" yPosition="420.0">
+      <Fields>
+        <Field name="project" type="CircParser" visibility="prıvate"/>
+        <Field name="jMainDesktop" type="javax.swing.JDesktopPane" visibility="prıvate"/>
+        <Field name="jMenu1" type="javax.swing.JMenu" visibility="prıvate"/>
+        <Field name="jMenu2" type="javax.swing.JMenu" visibility="prıvate"/>
+        <Field name="jMenuBar1" type="javax.swing.JMenuBar" visibility="prıvate"/>
+        <Field name="jMenuFileOpen" type="javax.swing.JMenuItem" visibility="prıvate"/>
+        <Field name="jPanel1" type="javax.swing.JPanel" visibility="prıvate"/>
+        <Field name="jPanel2" type="javax.swing.JPanel" visibility="prıvate"/>
+        <Field name="jScrollPane2" type="javax.swing.JScrollPane" visibility="prıvate"/>
+        <Field name="jSplitPane2" type="javax.swing.JSplitPane" visibility="prıvate"/>
+        <Field name="treeProject" type="javax.swing.JTree" visibility="prıvate"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="publıc">
+          <Argument type="String[]" name="args"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+void" visibility="prıvate"/>
+        <Method name="OpenFile" returnType="void" visibility="prıvate">
+          <Argument type="String" name="fileName"/>
+        </Method>
+        <Method name="jMenuFileOpenActionPerformed" returnType="void" visibility="prıvate">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="publıc" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="PinTableModel" package="Circ2Verilog.Desktop" visibility="publıc" xPosition="920.0" yPosition="420.0">
+      <Fields>
+        <Field name="types" type="Class[]" visibility="package"/>
+        <Field name="canEdit" type="boolean[]" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="publıc">
+          <Argument type="Circuit" name="circuit"/>
+          <Argument type="boolean" name="output"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getColumnClass" returnType="Class" visibility="publıc">
+          <Argument type="int" name="columnIndex"/>
+        </Method>
+        <Method name="isCellEditable" returnType="boolean" visibility="publıc">
+          <Argument type="int" name="rowIndex"/>
+          <Argument type="int" name="columnIndex"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="AbstractConnector" package="Circ2Verilog.Logisim" visibility="publıc" isAbstract="true" xPosition="1220.0" yPosition="420.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="getLength" returnType="int" visibility="publıc" isAbstract="true"/>
+      </Methods>
+    </Class>
+    <Class name="CircParser" package="Circ2Verilog.Logisim" visibility="publıc" xPosition="1520.0" yPosition="420.0">
+      <Fields>
+        <Field name="fileName" type="String" visibility="prıvate"/>
+        <Field name="project" type="XmlCircProject" visibility="prıvate"/>
+        <Field name="Circuits" type="HashMap&lt;String, Circuit&gt;" visibility="prıvate"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="publıc">
+          <Argument type="String" name="fileName"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="GetCircNames" returnType="String" visibility="publıc"/>
+        <Method name="FindCircuit" returnType="XmlCircuit" visibility="prıvate">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="GetCircuitWithName" returnType="Circuit" visibility="publıc">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="GetProjectVersion" returnType="String" visibility="publıc"/>
+        <Method name="GetProjectSource" returnType="String" visibility="publıc"/>
+        <Method name="GetMainCircuitName" returnType="String" visibility="publıc"/>
+        <Method name="GetCircuitNames" returnType="String[]" visibility="publıc"/>
+      </Methods>
+    </Class>
+    <Class name="Circuit" package="Circ2Verilog.Logisim" visibility="publıc" xPosition="1820.0" yPosition="420.0">
+      <Fields>
+        <Field name="elements" type="Vector&lt;CircuitElement&gt;" visibility="prıvate" isFinal="true"/>
+        <Field name="inputs" type="Vector&lt;InputPin&gt;" visibility="prıvate" isFinal="true"/>
+        <Field name="outputs" type="Vector&lt;OutputPin&gt;" visibility="prıvate" isFinal="true"/>
+        <Field name="connectors" type="Vector&lt;Connector&gt;" visibility="prıvate" isFinal="true"/>
+        <Field name="wires" type="Vector&lt;Wire&gt;" visibility="prıvate" isFinal="true"/>
+        <Field name="circuitName" type="String" visibility="prıvate"/>
+        <Field name="sharedLabel" type="ElementLabel" visibility="prıvate"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="publıc"/>
+      </Constructors>
+      <Methods>
+        <Method name="getConnectors" returnType="Connector[]" visibility="publıc"/>
+        <Method name="getSharedLabel" returnType="ElementLabel" visibility="publıc"/>
+        <Method name="setSharedLabel" returnType="void" visibility="publıc">
+          <Argument type="ElementLabel" name="sharedLabel"/>
+        </Method>
+        <Method name="getCircuitName" returnType="String" visibility="publıc"/>
+        <Method name="setCircuitName" returnType="void" visibility="publıc">
+          <Argument type="String" name="circuitName"/>
+        </Method>
+        <Method name="addComponent" returnType="void" visibility="publıc">
+          <Argument type="CircuitElement" name="element"/>
+        </Method>
+        <Method name="addConnector" returnType="void" visibility="publıc">
+          <Argument type="Connector" name="c"/>
+        </Method>
+        <Method name="addConnectors" returnType="void" visibility="publıc">
+          <Argument type="Connector[]" name="c"/>
+        </Method>
+        <Method name="addWire" returnType="boolean" visibility="publıc">
+          <Argument type="Wire" name="w"/>
+        </Method>
+        <Method name="getWires" returnType="Wire[]" visibility="publıc"/>
+        <Method name="getElements" returnType="CircuitElement[]" visibility="publıc"/>
+        <Method name="getInputs" returnType="InputPin[]" visibility="publıc"/>
+        <Method name="getOutputs" returnType="OutputPin[]" visibility="publıc"/>
+      </Methods>
+    </Class>
+    <Class name="CircuitElement" package="Circ2Verilog.Logisim" visibility="publıc" xPosition="2120.0" yPosition="420.0">
+      <Fields>
+        <Field name="position" type="Position" visibility="protected"/>
+        <Field name="label" type="ElementLabel" visibility="protected"/>
+        <Field name="elementType" type="String" visibility="prıvate" isFinal="true"/>
+        <Field name="connectors" type="Connector[]" visibility="protected"/>
+        <Field name="direction" type="Direction" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="protected">
+          <Argument type="int" name="posX"/>
+          <Argument type="int" name="posY"/>
+          <Argument type="ElementLabel" name="label"/>
+          <Argument type="Direction" name="direction"/>
+          <Argument type="String" name="elementType"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getPosition" returnType="Position" visibility="publıc"/>
+        <Method name="getDirection" returnType="Direction" visibility="publıc"/>
+        <Method name="getConnectors" returnType="Connector[]" visibility="publıc"/>
+        <Method name="getElementType" returnType="String" visibility="publıc"/>
+        <Method name="getLabel" returnType="ElementLabel" visibility="publıc"/>
+        <Method name="getPosX" returnType="int" visibility="publıc"/>
+        <Method name="getPosY" returnType="int" visibility="publıc"/>
+      </Methods>
+    </Class>
+    <Class name="CircuitFactory" package="Circ2Verilog.Logisim" visibility="publıc" isFinal="true" xPosition="20.0" yPosition="820.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="prıvate"/>
+      </Constructors>
+      <Methods>
+        <Method name="GetDirection" returnType="Direction" visibility="publıc" isStatic="true">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="GetFacing" returnType="Direction" visibility="publıc" isStatic="true">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="GetElementDirection" returnType="Direction" visibility="publıc" isStatic="true">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="GetLabelLocation" returnType="Direction" visibility="publıc" isStatic="true">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="ElementFactory" returnType="CircuitElement" visibility="publıc" isStatic="true">
+          <Argument type="XmlCircComponent" name="comp"/>
+        </Method>
+        <Method name="WireFactory" returnType="Wire" visibility="publıc" isStatic="true">
+          <Argument type="XmlCircWire" name="w"/>
+        </Method>
+        <Method name="SizeFactory" returnType="int" visibility="publıc" isStatic="true">
+          <Argument type="String" name="size"/>
+        </Method>
+        <Method name="MultiInputFactory" returnType="int" visibility="publıc" isStatic="true">
+          <Argument type="String" name="length"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="BaseGate" package="Circ2Verilog.Logisim.Components.Gates" visibility="publıc" isAbstract="true" xPosition="320.0" yPosition="820.0">
+      <Fields>
+        <Field name="bitLength" type="int" visibility="protected" isFinal="true"/>
+        <Field name="size" type="int" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="publıc">
+          <Argument type="int" name="bitLength"/>
+          <Argument type="int" name="posX"/>
+          <Argument type="int" name="posY"/>
+          <Argument type="ElementLabel" name="label"/>
+          <Argument type="Direction" name="direction"/>
+          <Argument type="String" name="elementType"/>
+          <Argument type="int" name="size"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getBitLength" returnType="int" visibility="publıc"/>
+        <Method name="getSize" returnType="int" visibility="publıc"/>
+      </Methods>
+    </Class>
+    <Class name="GateAnd" package="Circ2Verilog.Logisim.Components.Gates" visibility="publıc" xPosition="620.0" yPosition="820.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="publıc">
+          <Argument type="int" name="bitLength"/>
+          <Argument type="int" name="posX"/>
+          <Argument type="int" name="posY"/>
+          <Argument type="ElementLabel" name="label"/>
+          <Argument type="Direction" name="direction"/>
+          <Argument type="int" name="size"/>
+          <Argument type="int" name="inputLength"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="GateNot" package="Circ2Verilog.Logisim.Components.Gates" visibility="publıc" xPosition="920.0" yPosition="820.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="publıc">
+          <Argument type="int" name="bitLength"/>
+          <Argument type="int" name="posX"/>
+          <Argument type="int" name="posY"/>
+          <Argument type="ElementLabel" name="label"/>
+          <Argument type="Direction" name="direction"/>
+          <Argument type="int" name="size"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="GateOr" package="Circ2Verilog.Logisim.Components.Gates" visibility="publıc" xPosition="1220.0" yPosition="820.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="publıc">
+          <Argument type="int" name="bitLength"/>
+          <Argument type="int" name="posX"/>
+          <Argument type="int" name="posY"/>
+          <Argument type="ElementLabel" name="label"/>
+          <Argument type="Direction" name="direction"/>
+          <Argument type="int" name="size"/>
+          <Argument type="int" name="inputLength"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="MultiInputGate" package="Circ2Verilog.Logisim.Components.Gates" visibility="publıc" isAbstract="true" xPosition="1520.0" yPosition="820.0">
+      <Fields>
+        <Field name="inputLength" type="int" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="publıc">
+          <Argument type="int" name="bitLength"/>
+          <Argument type="int" name="posX"/>
+          <Argument type="int" name="posY"/>
+          <Argument type="ElementLabel" name="label"/>
+          <Argument type="Direction" name="direction"/>
+          <Argument type="String" name="elementType"/>
+          <Argument type="int" name="size"/>
+          <Argument type="int" name="inputLength"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getInputLength" returnType="int" visibility="publıc"/>
+        <Method name="createConnectors" returnType="void" visibility="protected" isFinal="true"/>
+      </Methods>
+    </Class>
+    <Class name="InputPin" package="Circ2Verilog.Logisim.Components.Wiring" visibility="publıc" xPosition="1820.0" yPosition="820.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="publıc">
+          <Argument type="int" name="bitLength"/>
+          <Argument type="int" name="posX"/>
+          <Argument type="int" name="posY"/>
+          <Argument type="ElementLabel" name="label"/>
+          <Argument type="Direction" name="direction"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getConnectorType" returnType="ConnectorType" visibility="publıc"/>
+      </Methods>
+    </Class>
+    <Class name="OutputPin" package="Circ2Verilog.Logisim.Components.Wiring" visibility="publıc" xPosition="2120.0" yPosition="820.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="publıc">
+          <Argument type="int" name="bitLength"/>
+          <Argument type="int" name="posX"/>
+          <Argument type="int" name="posY"/>
+          <Argument type="ElementLabel" name="label"/>
+          <Argument type="Direction" name="direction"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getConnectorType" returnType="ConnectorType" visibility="publıc"/>
+      </Methods>
+    </Class>
+    <Class name="Pin" package="Circ2Verilog.Logisim.Components.Wiring" visibility="publıc" isAbstract="true" xPosition="20.0" yPosition="1220.0">
+      <Fields>
+        <Field name="bitLength" type="int" visibility="protected"/>
+        <Field name="Facing" type="Direction" visibility="protected"/>
+        <Field name="pullBehavior" type="PullBehavior" visibility="protected"/>
+        <Field name="treeState" type="boolean" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="protected">
+          <Argument type="int" name="bitLength"/>
+          <Argument type="int" name="posX"/>
+          <Argument type="int" name="posY"/>
+          <Argument type="ElementLabel" name="label"/>
+          <Argument type="Direction" name="direction"/>
+          <Argument type="String" name="type"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="setBitLength" returnType="void" visibility="publıc">
+          <Argument type="int" name="bitLength"/>
+        </Method>
+        <Method name="getBitLength" returnType="int" visibility="publıc"/>
+        <Method name="getFacing" returnType="Direction" visibility="publıc"/>
+        <Method name="setFacing" returnType="void" visibility="publıc">
+          <Argument type="Direction" name="Facing"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Wire" package="Circ2Verilog.Logisim.Components.Wiring" visibility="publıc" xPosition="320.0" yPosition="1220.0">
+      <Fields>
+        <Field name="from" type="Position" visibility="prıvate"/>
+        <Field name="to" type="Position" visibility="prıvate"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="publıc">
+          <Argument type="int" name="toX"/>
+          <Argument type="int" name="toY"/>
+          <Argument type="int" name="fromX"/>
+          <Argument type="int" name="fromY"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getFrom" returnType="Position" visibility="publıc"/>
+        <Method name="getTo" returnType="Position" visibility="publıc"/>
+        <Method name="equals" returnType="boolean" visibility="publıc">
+          <Argument type="Object" name="obj"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="publıc"/>
+        <Method name="getLength" returnType="int" visibility="publıc"/>
+        <Method name="getToX" returnType="int" visibility="publıc"/>
+        <Method name="getToY" returnType="int" visibility="publıc"/>
+        <Method name="getFromX" returnType="int" visibility="publıc"/>
+        <Method name="getFromY" returnType="int" visibility="publıc"/>
+      </Methods>
+    </Class>
+    <Class name="Connector" package="Circ2Verilog.Logisim" visibility="publıc" isAbstract="true" xPosition="620.0" yPosition="1220.0">
+      <Fields>
+        <Field name="bitLength" type="int" visibility="prıvate" isFinal="true"/>
+        <Field name="position" type="Position" visibility="prıvate" isFinal="true"/>
+        <Field name="parent" type="CircuitElement" visibility="prıvate" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="protected">
+          <Argument type="CircuitElement" name="parent"/>
+          <Argument type="int" name="bitLength"/>
+          <Argument type="Position" name="position"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getBitLength" returnType="int" visibility="publıc"/>
+        <Method name="getPosX" returnType="int" visibility="publıc"/>
+        <Method name="getPosY" returnType="int" visibility="publıc"/>
+        <Method name="getPosition" returnType="Position" visibility="publıc"/>
+        <Method name="getParent" returnType="CircuitElement" visibility="publıc"/>
+      </Methods>
+    </Class>
+    <Enum name="Direction" package="Circ2Verilog.Logisim" visibility="publıc" xPosition="920.0" yPosition="1220.0">
+      <Literals>
+        <Literal name="West"/>
+        <Literal name="East"/>
+        <Literal name="North"/>
+        <Literal name="South"/>
+      </Literals>
+    </Enum>
+    <Class name="ElementLabel" package="Circ2Verilog.Logisim" visibility="publıc" xPosition="1220.0" yPosition="1220.0">
+      <Fields>
+        <Field name="Text" type="String" visibility="prıvate"/>
+        <Field name="Font" type="String" visibility="prıvate"/>
+        <Field name="Facing" type="Direction" visibility="prıvate"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="publıc">
+          <Argument type="String" name="Text"/>
+          <Argument type="String" name="Font"/>
+          <Argument type="Direction" name="Facing"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getText" returnType="String" visibility="publıc"/>
+        <Method name="getFont" returnType="String" visibility="publıc"/>
+        <Method name="getFacing" returnType="Direction" visibility="publıc"/>
+      </Methods>
+    </Class>
+    <Class name="InputConnector" package="Circ2Verilog.Logisim" visibility="publıc" xPosition="1520.0" yPosition="1220.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="publıc">
+          <Argument type="CircuitElement" name="parent"/>
+          <Argument type="int" name="bitLength"/>
+          <Argument type="Position" name="position"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getConnectorType" returnType="ConnectorType" visibility="publıc"/>
+      </Methods>
+    </Class>
+    <Interface name="MultiBitable" package="Circ2Verilog.Logisim" visibility="publıc" xPosition="1820.0" yPosition="1220.0">
+      <Methods>
+        <Method name="getBitLength" returnType="int" visibility="package"/>
+      </Methods>
+    </Interface>
+    <Interface name="MultiInputable" package="Circ2Verilog.Logisim" visibility="publıc" xPosition="2120.0" yPosition="1220.0">
+      <Methods>
+        <Method name="getInputLength" returnType="int" visibility="package"/>
+      </Methods>
+    </Interface>
+    <Class name="OutputConnector" package="Circ2Verilog.Logisim" visibility="publıc" xPosition="20.0" yPosition="1620.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="publıc">
+          <Argument type="CircuitElement" name="parent"/>
+          <Argument type="int" name="bitLength"/>
+          <Argument type="Position" name="position"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getConnectorType" returnType="ConnectorType" visibility="publıc"/>
+      </Methods>
+    </Class>
+    <Class name="Position" package="Circ2Verilog.Logisim" visibility="publıc" xPosition="320.0" yPosition="1620.0">
+      <Fields>
+        <Field name="x" type="int" visibility="prıvate"/>
+        <Field name="y" type="int" visibility="prıvate"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="publıc">
+          <Argument type="int" name="x"/>
+          <Argument type="int" name="y"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getX" returnType="int" visibility="publıc"/>
+        <Method name="getY" returnType="int" visibility="publıc"/>
+        <Method name="toString" returnType="String" visibility="publıc"/>
+      </Methods>
+    </Class>
+    <Class name="PositionFactory" package="Circ2Verilog.Logisim" visibility="publıc" xPosition="620.0" yPosition="1620.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="prıvate"/>
+      </Constructors>
+      <Methods>
+        <Method name="SingleConnectorPositionFactory" returnType="Position" visibility="publıc" isStatic="true">
+          <Argument type="int" name="size"/>
+          <Argument type="Direction" name="direction"/>
+          <Argument type="Position" name="elementPosition"/>
+        </Method>
+        <Method name="StandardConnectorPositionFactory" returnType="Position" visibility="publıc" isStatic="true">
+          <Argument type="int" name="inputIndex"/>
+          <Argument type="int" name="size"/>
+          <Argument type="int" name="inputLength"/>
+          <Argument type="Direction" name="direction"/>
+          <Argument type="Position" name="elementPosition"/>
+          <Argument type="boolean" name="isNot"/>
+        </Method>
+        <Method name="StandardConnectorPositionFactory" returnType="Position" visibility="publıc" isStatic="true">
+          <Argument type="int" name="inputIndex"/>
+          <Argument type="int" name="size"/>
+          <Argument type="int" name="inputLength"/>
+          <Argument type="Direction" name="direction"/>
+          <Argument type="Position" name="elementPosition"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Enum name="PullBehavior" package="Circ2Verilog.Logisim" visibility="publıc" xPosition="920.0" yPosition="1620.0">
+      <Literals>
+        <Literal name="UnChanged"/>
+        <Literal name="PullUp"/>
+        <Literal name="PullDown"/>
+      </Literals>
+    </Enum>
+    <Interface name="SizeableElement" package="Circ2Verilog.Logisim" visibility="publıc" xPosition="1220.0" yPosition="1620.0">
+      <Methods>
+        <Method name="getSize" returnType="int" visibility="package"/>
+      </Methods>
+    </Interface>
+    <Class name="StandartConnectorData" package="Circ2Verilog.Logisim" visibility="publıc" xPosition="1520.0" yPosition="1620.0">
+      <Fields>
+        <Field name="ConnectorDiffs30" type="Hashtable&lt;Integer, Integer&gt;" visibility="prıvate" isFinal="true"/>
+        <Field name="ConnectorDiffs50" type="Hashtable&lt;Integer, Integer&gt;" visibility="prıvate" isFinal="true"/>
+        <Field name="ConnectorDiffs70" type="Hashtable&lt;Integer, Integer&gt;" visibility="prıvate" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="publıc"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="PropertyParser" package="Circ2Verilog.Logisim.XmlParser" visibility="publıc" xPosition="1820.0" yPosition="1620.0">
+      <Fields>
+        <Field name="properties" type="HashMap&lt;String, String&gt;" visibility="prıvate" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="publıc">
+          <Argument type="XmlCircProperty[]" name="properties"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="get" returnType="String" visibility="publıc">
+          <Argument type="String" name="name"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="WirePoint" package="Circ2Verilog.Logisim.XmlParser" visibility="publıc" xPosition="2120.0" yPosition="1620.0">
+      <Fields>
+        <Field name="X" type="int" visibility="publıc"/>
+        <Field name="Y" type="int" visibility="publıc"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="XmlCircComponent" package="Circ2Verilog.Logisim.XmlParser" visibility="publıc" xPosition="20.0" yPosition="2020.0">
+      <Fields>
+        <Field name="Name" type="String" visibility="publıc"/>
+        <Field name="loc" type="String" visibility="publıc"/>
+        <Field name="Properties" type="XmlCircProperty[]" visibility="publıc"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="GetPositionX" returnType="int" visibility="publıc"/>
+        <Method name="GetPositionY" returnType="int" visibility="publıc"/>
+      </Methods>
+    </Class>
+    <Class name="XmlCircProject" package="Circ2Verilog.Logisim.XmlParser" visibility="publıc" xPosition="320.0" yPosition="2020.0">
+      <Fields>
+        <Field name="source" type="String" visibility="publıc"/>
+        <Field name="version" type="String" visibility="publıc"/>
+        <Field name="mainProject" type="XmlCircProperty" visibility="publıc"/>
+        <Field name="Circuits" type="XmlCircuit[]" visibility="publıc"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="XmlCircProperty" package="Circ2Verilog.Logisim.XmlParser" visibility="publıc" xPosition="620.0" yPosition="2020.0">
+      <Fields>
+        <Field name="Name" type="String" visibility="publıc"/>
+        <Field name="Value" type="String" visibility="publıc"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="XmlCircuit" package="Circ2Verilog.Logisim.XmlParser" visibility="publıc" xPosition="920.0" yPosition="2020.0">
+      <Fields>
+        <Field name="name" type="String" visibility="publıc"/>
+        <Field name="Properties" type="XmlCircProperty[]" visibility="publıc"/>
+        <Field name="Components" type="XmlCircComponent[]" visibility="publıc"/>
+        <Field name="Wires" type="XmlCircWire[]" visibility="publıc"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="XmlCircWire" package="Circ2Verilog.Logisim.XmlParser" visibility="publıc" xPosition="1220.0" yPosition="2020.0">
+      <Fields>
+        <Field name="ToX" type="int" visibility="publıc"/>
+        <Field name="ToY" type="int" visibility="publıc"/>
+        <Field name="FromX" type="int" visibility="publıc"/>
+        <Field name="FromY" type="int" visibility="publıc"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="setFrom" returnType="void" visibility="publıc">
+          <Argument type="String" name="s"/>
+        </Method>
+        <Method name="setTo" returnType="void" visibility="publıc">
+          <Argument type="String" name="s"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="from" source="Circ2Verilog.Logisim.Components.Wiring.Wire" target="Circ2Verilog.Logisim.Position" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="to" source="Circ2Verilog.Logisim.Components.Wiring.Wire" target="Circ2Verilog.Logisim.Position" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Circ2Verilog.ConnectionRender.RenderMachine" target="Circ2Verilog.ConnectionRender.ElementConnection" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Circ2Verilog.Logisim.CircuitElement" target="Circ2Verilog.Logisim.Position" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Circ2Verilog.Logisim.Components.Wiring.Wire" target="Circ2Verilog.Logisim.Position" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="position" source="Circ2Verilog.Logisim.Connector" target="Circ2Verilog.Logisim.Position" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Circ2Verilog.Logisim.OutputConnector" target="Circ2Verilog.Logisim.Connector" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="circuit" source="Circ2Verilog.Desktop.CircuitTableModel" target="Circ2Verilog.Logisim.Circuit" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="outputs" source="Circ2Verilog.Logisim.Circuit" target="Circ2Verilog.Logisim.Components.Wiring.OutputPin" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="circuit" source="Circ2Verilog.Desktop.CustomMutableTreeNode" target="Circ2Verilog.Logisim.Circuit" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Circ2Verilog.Logisim.InputConnector" target="Circ2Verilog.Logisim.Connector" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Circ2Verilog.Logisim.Connector" target="Circ2Verilog.Logisim.CircuitElement" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="OutElement" source="Circ2Verilog.ConnectionRender.ElementConnection" target="Circ2Verilog.ConnectionRender.Elementable" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="Circ2Verilog.Logisim.Components.Gates.GateOr" target="Circ2Verilog.Logisim.Components.Gates.MultiInputGate"/>
+    <IsRelation name="is" source="Circ2Verilog.Logisim.Components.Wiring.InputPin" target="Circ2Verilog.Logisim.Components.Wiring.Pin"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Circ2Verilog.Logisim.Components.Gates.BaseGate" target="Circ2Verilog.Logisim.MultiBitable"/>
+    <UseRelation source="Circ2Verilog.Logisim.Components.Wiring.InputPin" target="Circ2Verilog.Logisim.Connector" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Circ2Verilog.Logisim.Components.Wiring.OutputPin" target="Circ2Verilog.Logisim.Connector" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Circ2Verilog.Desktop.CustomMutableTreeNode" target="Circ2Verilog.Logisim.Circuit" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="label" source="Circ2Verilog.Logisim.CircuitElement" target="Circ2Verilog.Logisim.ElementLabel" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="elements" source="Circ2Verilog.Logisim.Circuit" target="Circ2Verilog.Logisim.CircuitElement" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="sharedLabel" source="Circ2Verilog.Logisim.Circuit" target="Circ2Verilog.Logisim.ElementLabel" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="Circ2Verilog.Logisim.Components.Wiring.Wire" target="Circ2Verilog.Logisim.AbstractConnector"/>
+    <HasRelation name="parent" source="Circ2Verilog.Logisim.Connector" target="Circ2Verilog.Logisim.CircuitElement" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Circ2Verilog.Logisim.Components.Gates.MultiInputGate" target="Circ2Verilog.Logisim.MultiInputable"/>
+    <HasRelation name="Facing" source="Circ2Verilog.Logisim.ElementLabel" target="Circ2Verilog.Logisim.Direction" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Circ2Verilog.Logisim.CircParser" target="Circ2Verilog.Logisim.Circuit" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Circ2Verilog.Logisim.Circuit" target="Circ2Verilog.Logisim.Components.Wiring.Pin" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="Circ2Verilog.Desktop.CircuitTableModel" target="Circ2Verilog.Desktop.CustomTableModel"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Circ2Verilog.Logisim.Components.Wiring.Pin" target="Circ2Verilog.ConnectionRender.Connectorable"/>
+    <IsRelation name="is" source="Circ2Verilog.Logisim.Components.Wiring.Pin" target="Circ2Verilog.Logisim.CircuitElement"/>
+    <UseRelation source="Circ2Verilog.ConnectionRender.ElementConnection" target="Circ2Verilog.Logisim.Connector" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Circ2Verilog.Desktop.CircuitTableModel" target="Circ2Verilog.Logisim.Circuit" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="position" source="Circ2Verilog.Logisim.CircuitElement" target="Circ2Verilog.Logisim.Position" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Circ2Verilog.Logisim.CircuitElement" target="Circ2Verilog.Logisim.ElementLabel" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Circ2Verilog.Logisim.Components.Wiring.Pin" target="Circ2Verilog.Logisim.MultiBitable"/>
+    <IsRelation name="is" source="Circ2Verilog.Logisim.InputConnector" target="Circ2Verilog.Logisim.Connector"/>
+    <IsRelation name="is" source="Circ2Verilog.Logisim.Components.Gates.MultiInputGate" target="Circ2Verilog.Logisim.Components.Gates.BaseGate"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Circ2Verilog.Logisim.Components.Wiring.Wire" target="Circ2Verilog.ConnectionRender.Wireable"/>
+    <UseRelation source="Circ2Verilog.Logisim.Circuit" target="Circ2Verilog.Logisim.Connector" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="inputs" source="Circ2Verilog.Logisim.Circuit" target="Circ2Verilog.Logisim.Components.Wiring.InputPin" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Circ2Verilog.Logisim.CircuitElement" target="Circ2Verilog.ConnectionRender.Elementable"/>
+    <UseRelation source="Circ2Verilog.Logisim.Circuit" target="Circ2Verilog.Logisim.Components.Wiring.Wire" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="mainProject" source="Circ2Verilog.Logisim.XmlParser.XmlCircProject" target="Circ2Verilog.Logisim.XmlParser.XmlCircProperty" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="connectors" source="Circ2Verilog.Logisim.Circuit" target="Circ2Verilog.Logisim.Connector" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Circ2Verilog.ConnectionRender.Connectorable" target="Circ2Verilog.Logisim.Connector" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="Circ2Verilog.Desktop.PinTableModel" target="Circ2Verilog.Desktop.CircuitTableModel"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Circ2Verilog.Logisim.Components.Gates.BaseGate" target="Circ2Verilog.Logisim.SizeableElement"/>
+    <UseRelation source="Circ2Verilog.Logisim.CircParser" target="Circ2Verilog.Logisim.XmlParser.XmlCircuit" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Circ2Verilog.Logisim.Connector" target="Circ2Verilog.Logisim.Position" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Circ2Verilog.Logisim.CircuitElement" target="Circ2Verilog.Logisim.Direction" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Circ2Verilog.Logisim.Circuit" target="Circ2Verilog.Logisim.CircuitElement" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Circ2Verilog.Logisim.CircuitElement" target="Circ2Verilog.Logisim.Connector" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Circ2Verilog.Logisim.CircuitFactory" target="Circ2Verilog.Logisim.Direction" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Circ2Verilog.Logisim.CircuitFactory" target="Circ2Verilog.Logisim.XmlParser.XmlCircComponent" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="InConnector" source="Circ2Verilog.ConnectionRender.ElementConnection" target="Circ2Verilog.ConnectionRender.Connectorable" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Circ2Verilog.ConnectionRender.ElementConnection" target="Circ2Verilog.ConnectionRender.Elementable" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Circ2Verilog.Logisim.ElementLabel" target="Circ2Verilog.Logisim.Direction" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="Circuits" source="Circ2Verilog.Logisim.CircParser" target="Circ2Verilog.Logisim.Circuit" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="HashMap&lt;String, Circuit&gt;"/>
+    <HasRelation name="project" source="Circ2Verilog.Desktop.MainForm" target="Circ2Verilog.Logisim.CircParser" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Circ2Verilog.Logisim.Connector" target="Circ2Verilog.ConnectionRender.Connectorable"/>
+    <IsRelation name="is" source="Circ2Verilog.Logisim.Components.Wiring.OutputPin" target="Circ2Verilog.Logisim.Components.Wiring.Pin"/>
+    <HasRelation name="OutConnector" source="Circ2Verilog.ConnectionRender.ElementConnection" target="Circ2Verilog.ConnectionRender.Connectorable" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Circ2Verilog.Logisim.Components.Wiring.Pin" target="Circ2Verilog.Logisim.Direction" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="Circ2Verilog.Logisim.Components.Gates.BaseGate" target="Circ2Verilog.Logisim.CircuitElement"/>
+    <HasRelation name="direction" source="Circ2Verilog.Logisim.CircuitElement" target="Circ2Verilog.Logisim.Direction" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="pullBehavior" source="Circ2Verilog.Logisim.Components.Wiring.Pin" target="Circ2Verilog.Logisim.PullBehavior" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="project" source="Circ2Verilog.Logisim.CircParser" target="Circ2Verilog.Logisim.XmlParser.XmlCircProject" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="Circ2Verilog.Logisim.Components.Gates.GateNot" target="Circ2Verilog.Logisim.Components.Gates.BaseGate"/>
+    <HasRelation name="Facing" source="Circ2Verilog.Logisim.Components.Wiring.Pin" target="Circ2Verilog.Logisim.Direction" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="circ" source="Circ2Verilog.Desktop.CircuitForm" target="Circ2Verilog.Logisim.Circuit" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="Circ2Verilog.Logisim.OutputConnector" target="Circ2Verilog.Logisim.Connector"/>
+    <UseRelation source="Circ2Verilog.Logisim.CircuitFactory" target="Circ2Verilog.Logisim.XmlParser.XmlCircWire" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Circ2Verilog.Logisim.PositionFactory" target="Circ2Verilog.Logisim.Position" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Circ2Verilog.Logisim.Circuit" target="Circ2Verilog.Logisim.ElementLabel" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="Circ2Verilog.Logisim.Components.Gates.GateAnd" target="Circ2Verilog.Logisim.Components.Gates.MultiInputGate"/>
+    <HasRelation name="InElement" source="Circ2Verilog.ConnectionRender.ElementConnection" target="Circ2Verilog.ConnectionRender.Elementable" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="wires" source="Circ2Verilog.Logisim.Circuit" target="Circ2Verilog.Logisim.Components.Wiring.Wire" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
